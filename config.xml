@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.jkg.durhamweeks"
+        versionCode="10" 
+        version   = "1.0.0">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Durham Weeks</name>
+
+    <description>
+        Convert between calendar weeks and Durham weeks
+    </description>
+
+    <author href="https://durhamweeks.jkg.dk" email="durhamweeks@jkg.dk">
+        Jens Kristian Geyti
+    </author>
+
+</widget>
