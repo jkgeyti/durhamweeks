@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Durham weeks</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="bootstrap-datepicker.js"></script>
+    <script src="moment.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="datepicker.css">
+    <style>
+        .has-error input {
+            background-color: #fcf2f2;
+        }
+        hr {
+            margin-top: 80px;
+            margin-bottom: 40px;
+        }
+        footer {
+            margin-bottom: 40px;
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>Durham Week Converter</h3>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Date</td>
+            <td>
+                <!--<input type="text" class="form-control" id="date" style="width:150px;">-->
+
+                <div class="col-lg-6">
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" id="date" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" id="datebtn" type="button">
+                                    Pick Date
+                                </button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Calendar Week</td>
+            <td class="week-field" id="week-gregorian"></td>
+        </tr>
+        <tr>
+            <td>Syllabus Week</td>
+            <td class="week-field" id="week-syllabus"></td>
+        </tr>
+        <tr>
+            <td>Durham Week</td>
+            <td class="week-field" id="week-durham"></td>
+        </tr>
+        <tr>
+            <td>Teaching Week</td>
+            <td class="week-field" id="week-teaching"></td>
+        </tr>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Location</th>
+            <th>Date and time now</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Durham</td>
+            <td id="utc-now"></td>
+        </tr>
+        <tr>
+            <td>Local</td>
+            <td id="local-now"></td>
+        </tr>
+    </table>
+
+    <hr/>
+    <footer>
+        Based on <a href="https://timetable.dur.ac.uk/week_patterns.htm">2013-14 Teaching Timetable</a>.<br/>
+        Made by <a href="http://www.jkg.dk">jkg.dk</a>, <a href="mailto:durhamweekconverter@jkg.dk">durhamweekconverter@jkg.dk</a>
+    </footer>
+    </div>
+</body>
+</html>
