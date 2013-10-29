@@ -4,14 +4,15 @@ $(function() {
         format: "dd/mm/yyyy",
         calendarWeeks: true,
         keyboardNavigation: false,
-        todayHighlight: true
+        todayHighlight: true,
+        weekStart: 1
     })
         .on('changeDate', function(e) {
 
             console.log(e.date);
 
             //var formdate = moment.utc($(this).val() + " 13:00", "DD/MM/YYYY hh:mm", true);
-            var formdate = moment.utc(e.date);
+            var formdate = moment(e.date);
             $('#date').val(formdate.format("DD/MM/YYYY"))
             $('#date').trigger('keyup');
         });
@@ -24,6 +25,7 @@ $(function() {
         } else {
             $(this).parent().removeClass('has-error');
             location.hash = '#' + formdate.format("DDMMYYYY");
+            $('#datebtn').datepicker('update', formdate.format("DD/MM/YYYY"));
         }
         $('#datebtn').datepicker('hide');
         update(formdate);
@@ -43,15 +45,33 @@ $(function() {
         }
 
         //Prepend year as a hack to make gregorian week number grow across new year
-        var yearPrefix = "" + ts.format("YY");
-        var gregWeek = parseInt(yearPrefix + ts.format("ww"));
-        $('#week-gregorian').text( ts.format("ww") );
+        var year = "" + ts.format("YY");
+        var gregWeek = parseInt(ts.format("ww"));
+        $('#week-gregorian').text( gregWeek );
+
+        var syllabusWeek;
+        if (year == 13) {
+            syllabusWeek = gregWeek - 30;
+        } else if (year == 14) {
+            syllabusWeek = gregWeek + 22;
+        }
+
+        console.log(gregWeek);
 
         //Syllabus 2013/14 starts on Mon 29 Jul (week 31)
-        var syllabusWeek = parseInt(("" + (gregWeek - 30)).substring(2));
+        var before = moment.utc("28/07/2013", "DD/MM/YYYY", true);
+        var after = moment.utc("27/07/2014", "DD/MM/YYYY", true);
 
-        if (gregWeek < 1331 || gregWeek > 1430) {
-            $('#week-syllabus').text( "Not in 2013-14");
+        console.log(before);
+        console.log(after);
+        console.log(ts);
+
+        console.log(before.diff(ts, 'days',true));
+        console.log(after.diff(ts, 'days',true));
+
+        if ( before.diff(ts) > 0
+            || after.diff(ts) < 0) {
+            $('#week-syllabus').text( "Not in 2013-14 timetable");
         } else {
             $('#week-syllabus').text( syllabusWeek );
         }
@@ -123,7 +143,8 @@ $(function() {
     if (hash.length > 0) {
         var date = moment(hash, "DDMMYYYY", true);
     }
-    $('#datebtn').datepicker('update', date);
+
+    -$('#datebtn').datepicker('update', date);
     $('#date').val(date.format("DD/MM/YYYY"));
     $('#date').trigger('keyup');
 });
