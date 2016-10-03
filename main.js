@@ -18,7 +18,7 @@ $(function() {
         });
 
     $('#date').on('keyup', function() {
-        var formdate = moment.utc( $(this).val(), "DD/MM/YYYY", true );
+        var formdate = moment( $(this).val(), "DD/MM/YYYY", true );
 
         if (!formdate.isValid() || formdate.year() < 2016 || formdate.year() > 2017) {
             $(this).parent().addClass('has-error');
@@ -39,6 +39,8 @@ $(function() {
 
     function update(ts) {
 
+        console.log(ts), ts.format("ww");
+
         if (!ts.isValid() || ts.year() < 2016 || ts.year() > 2017) {
             $('.week-field').text("");
             return;
@@ -46,22 +48,22 @@ $(function() {
 
         //Prepend year as a hack to make gregorian week number grow across new year
         var year = "" + ts.format("YY");
-        var gregWeek = parseInt(ts.format("ww"));
+        var gregWeek = parseInt(ts.format("WW"));
         $('#week-gregorian').text( gregWeek );
 
         var syllabusWeek;
         if (year == 16) {
-            syllabusWeek = gregWeek - 30;
+            syllabusWeek = gregWeek - 29;
         } else if (year == 17) {
-            syllabusWeek = gregWeek + 22;
+            syllabusWeek = gregWeek + 23;
         }
 
         console.log(gregWeek);
 
         //OLD: Syllabus 2013/14 starts on Mon 29 Jul (week 31)
         //NEW Syllabus 2016/17 starts on Mon 25 Jul
-        var before = moment.utc("25/07/2016", "DD/MM/YYYY", true);
-        var after = moment.utc("21/07/2017", "DD/MM/YYYY", true);
+        var before = moment("25/07/2016", "DD/MM/YYYY", true);
+        var after = moment("21/07/2017", "DD/MM/YYYY", true);
 
         console.log(before);
         console.log(after);
@@ -72,7 +74,7 @@ $(function() {
 
         if ( before.diff(ts) > 0
             || after.diff(ts) < 0) {
-            $('#week-syllabus').text( "Not in 2013-14 timetable");
+            $('#week-syllabus').text( "Not in 2016-17 timetable");
         } else {
             $('#week-syllabus').text( syllabusWeek );
         }
@@ -80,22 +82,22 @@ $(function() {
         //Durham weeks
         var durhamWeek;
         var durhamWeekText;
-        if (between(syllabusWeek, 10, 20))
+        if (between(syllabusWeek, 11, 21))
         {
             durhamWeekText = "Michaelmas Week";
-            durhamWeek = syllabusWeek - 9;
+            durhamWeek = syllabusWeek - 10;
         }
         else if (between(syllabusWeek, 26, 34))
         {
             durhamWeekText = "Epiphany Week";
             durhamWeek = syllabusWeek - 25;
         }
-        else if (between(syllabusWeek, 40, 45))
+        else if (between(syllabusWeek, 40, 48))
         {
             durhamWeekText = "Easter Week";
             durhamWeek = syllabusWeek - 39;
         } else {
-            durhamWeekText = "N/A (or vacation)";
+            durhamWeekText = "N/A (or holiday)";
             durhamWeek = "";
         }
         $('#week-durham').text(durhamWeekText + " " + durhamWeek)
@@ -103,15 +105,15 @@ $(function() {
         //Teaching Weeks
         var teachingWeek;
         var teachingWeekText;
-        if (syllabusWeek == 10)
+        if (syllabusWeek == 11)
         {
             teachingWeekText = "Induction Week"
             teachingWeek = "";
         }
-        else if (between(syllabusWeek, 11, 20))
+        else if (between(syllabusWeek, 12, 21))
         {
             teachingWeekText = "Teaching Week";
-            teachingWeek = syllabusWeek - 10;
+            teachingWeek = syllabusWeek - 11;
         }
         else if (between(syllabusWeek, 26, 34))
         {
