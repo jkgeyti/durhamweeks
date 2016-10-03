@@ -20,7 +20,7 @@ $(function() {
     $('#date').on('keyup', function() {
         var formdate = moment.utc( $(this).val(), "DD/MM/YYYY", true );
 
-        if (!formdate.isValid() || formdate.year() < 2013 || formdate.year() > 2014) {
+        if (!formdate.isValid() || formdate.year() < 2016 || formdate.year() > 2017) {
             $(this).parent().addClass('has-error');
         } else {
             $(this).parent().removeClass('has-error');
