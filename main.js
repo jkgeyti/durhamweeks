@@ -39,7 +39,7 @@ $(function() {
 
     function update(ts) {
 
-        if (!ts.isValid() || ts.year() < 2013 || ts.year() > 2014) {
+        if (!ts.isValid() || ts.year() < 2016 || ts.year() > 2017) {
             $('.week-field').text("");
             return;
         }
@@ -50,9 +50,9 @@ $(function() {
         $('#week-gregorian').text( gregWeek );
 
         var syllabusWeek;
-        if (year == 13) {
+        if (year == 16) {
             syllabusWeek = gregWeek - 30;
-        } else if (year == 14) {
+        } else if (year == 17) {
             syllabusWeek = gregWeek + 22;
         }
 
