@@ -58,9 +58,10 @@ $(function() {
 
         console.log(gregWeek);
 
-        //Syllabus 2013/14 starts on Mon 29 Jul (week 31)
-        var before = moment.utc("28/07/2013", "DD/MM/YYYY", true);
-        var after = moment.utc("27/07/2014", "DD/MM/YYYY", true);
+        //OLD: Syllabus 2013/14 starts on Mon 29 Jul (week 31)
+        //NEW Syllabus 2016/17 starts on Mon 25 Jul
+        var before = moment.utc("25/07/2016", "DD/MM/YYYY", true);
+        var after = moment.utc("21/07/2017", "DD/MM/YYYY", true);
 
         console.log(before);
         console.log(after);
@@ -144,7 +145,7 @@ $(function() {
         var date = moment(hash, "DDMMYYYY", true);
     }
 
-    -$('#datebtn').datepicker('update', date);
+    $('#datebtn').datepicker('update', date);
     $('#date').val(date.format("DD/MM/YYYY"));
     $('#date').trigger('keyup');
 });
