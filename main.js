@@ -24,7 +24,13 @@ $(function() {
             $(this).parent().addClass('has-error');
         } else {
             $(this).parent().removeClass('has-error');
-            location.hash = '#' + formdate.format("DDMMYYYY");
+            
+            if ( formdate.format("DDMMYYYY") == moment().format("DDMMYYYY") ) {
+                location.hash = '#';
+            } else {
+                location.hash = '#' + formdate.format("DDMMYYYY");
+            }
+
             $('#datebtn').datepicker('update', formdate.format("DD/MM/YYYY"));
         }
         $('#datebtn').datepicker('hide');
