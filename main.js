@@ -32,10 +32,11 @@ $(function() {
     });
 
     var local = moment();
-    var utc = moment.utc();
+    var utc = moment().tz("Europe/London");
+
 
     $('#local-now').text( local.format("dddd, D MMMM YYYY, h:mm a (Z)") );
-    $('#utc-now').text( utc.format("dddd, D MMMM YYYY, h:mm a (Z)") );
+    $('#utc-now').text( utc.format("dddd, D MMMM YYYY, h:mm a (Z z)") );
 
     function update(ts) {
 

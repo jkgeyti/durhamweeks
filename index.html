@@ -6,7 +6,8 @@
     <script src="jquery-1.10.2.min.js"></script>
     <script src="bootstrap.min.js"></script>
     <script src="bootstrap-datepicker.js"></script>
-    <script src="moment.min.js"></script>
+    <script src="moment.js"></script>
+    <script src="moment-timezone.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="datepicker.css">
@@ -70,7 +71,6 @@
                 <!--<input type="text" class="form-control" id="date" style="width:150px;">-->
 
                 <div class="col-lg-6">
-                    <div class="col-lg-6">
                         <div class="input-group">
                             <input type="text" id="date" class="form-control">
                             <span class="input-group-btn">
@@ -79,7 +79,6 @@
                                 </button>
                             </span>
                         </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
                 </div>
             </td>
         </tr>
@@ -112,7 +111,7 @@
             <td id="utc-now"></td>
         </tr>
         <tr>
-            <td>Local</td>
+            <td>You</td>
             <td id="local-now"></td>
         </tr>
     </table>
@@ -122,10 +121,10 @@
     <footer>
         <ul>
             <li>This website/app is not affiliated with Durham University in any way.</li>
-            <li>Based on <a href="https://timetable.dur.ac.uk/week_patterns.htm">2013-14 Teaching Timetable</a>.</li>
-            <li>Mobile apps (for sideloading) available from <a href="https://build.phonegap.com/apps/619670/install">Phonegap Build</a></li>
+            <li>Based on <a href="https://timetable.dur.ac.uk/week_patterns.htm">2016-17 Teaching Timetable</a>.</li>
+            <li>Offline mobile apps (for sideloading) available from <a href="https://build.phonegap.com/apps/619670/install">Phonegap Build</a></li>
             <li>Made by <a href="http://www.jkg.dk">jkg.dk</a>, <a href="mailto:durhamweekconverter@jkg.dk">durhamweekconverter@jkg.dk</a></li>
-            <li>Version 1.0.0</li>
+            <li>Version 1.1.0</li>
         </ul>
     </footer>
     </div>
